@@ -1,4 +1,5 @@
 ﻿using System;
+using calculator.Abstractions;
 
 namespace calculator
 {
@@ -6,9 +7,11 @@ namespace calculator
     {
         static void Main(string[] args)
         {
+            ICalculateOperation operationAdd=new Adder();
+            ICalculateOperation operationSubtract=new Subtractor();
             double result;
-            result= new CalculateOperation().Add(2,2);
-            result=new CalculateOperation().Subtract(3,2);
+            result= new CalculateOperation(operationAdd).Calculate(2,2);
+            result=new CalculateOperation(operationSubtract).Calculate(3,2);
         }
     }
 }

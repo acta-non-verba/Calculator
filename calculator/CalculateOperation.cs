@@ -1,14 +1,17 @@
+using calculator.Abstractions;
+
 namespace calculator
 {
     public class CalculateOperation
     {
-        public double Add(double x,double y)
+        private readonly ICalculateOperation _operation;
+        public CalculateOperation(ICalculateOperation operation)
         {
-            return x+y;
+            _operation=operation;
         }
-        public double Subtract(double x,double y)
-        {
-            return x-y;
-        }
+      public double Calculate(double x ,double y)
+      {
+          return _operation.CalculateOperation(x,y);
+      }
     }
 }
